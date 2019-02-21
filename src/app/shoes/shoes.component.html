@@ -1,0 +1,52 @@
+<h2>{{ title }}</h2>
+
+<p>Add brand</p>
+<input type="text" [(ngModel)]="myBrand" (keyup.enter)="showWord()" />
+<button (click)="getMyBrand()">Show my brand</button>
+<button (click)="addBrand()">Add brand</button>
+
+<strong>{{ myBrand }}</strong>
+
+<p>Best brands:</p>
+<ul>
+  <li *ngFor="let brand of brands; let index = index">
+    {{ index + " - " + brand }}
+    <button (click)="removeBrand(index)">Remove</button>
+  </li>
+</ul>
+
+<p>Shoes:</p>
+<ul>
+  <li *ngFor="let shoe of shoes">
+    <span [ngStyle]="{ 'text-decoration': !shoe.stock && 'line-through' }">
+      {{ shoe.brand }} {{ shoe.model }} -
+      <strong
+        [class.highPrice]="shoe.price >= 80"
+        [ngClass]="{
+          bgRed: shoe.price > 100,
+          underline: shoe.brand == 'Gravis'
+        }"
+      >
+        {{ shoe.price }}€
+      </strong>
+    </span>
+    <span *ngIf="shoe.price < 50" [style.background]="shoe.price < 40 && 'red'">
+      DISCOUNT!
+    </span>
+  </li>
+</ul>
+
+<p>Colors:</p>
+<input type="text" [(ngModel)]="color" />
+<ul [ngSwitch]="color">
+  <li *ngSwitchCase="'black'">
+    The prevailing color is <span [ngStyle]="{ background: color }">black</span>
+  </li>
+  <li *ngSwitchCase="'green'">
+    The prevailing color is <span [ngStyle]="{ background: color }">green</span>
+  </li>
+  <li *ngSwitchCase="'yellow'">
+    The prevailing color is
+    <span [ngStyle]="{ background: color }">yellow</span>
+  </li>
+</ul>

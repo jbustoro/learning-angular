@@ -1,0 +1,14 @@
+<h2>Main page</h2>
+<div *ngIf="identified; then yesIdentified else notIdentified">
+
+</div>
+
+<ng-template #yesIdentified>
+    <h3>You are indentified</h3>
+    <button (click)="unsetIdentified()">Delete identification</button>
+</ng-template>
+
+<ng-template #notIdentified>
+  <h3>You are not identified</h3>
+  <button (click)="setIdentified()">Indentify</button>
+</ng-template>

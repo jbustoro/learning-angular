@@ -1,0 +1,42 @@
+<!-- The content below is only a placeholder and can be replaced. -->
+<div
+  [ngStyle]="{
+    background: configuration.background,
+    color: configuration.color,
+    padding: '20px',
+    border: '5px solid red'
+  }"
+>
+  <h1>Welcome to {{ title }}!</h1>
+  <p>{{ description }}</p>
+
+  <nav>
+    <a [routerLink]="['/home']" [routerLinkActive]="['active']">Home</a> &nbsp;
+    <a [routerLink]="['/shoes']" [routerLinkActive]="['active']">Shoes</a>
+    &nbsp;
+    <a [routerLink]="['/videogames']" [routerLinkActive]="['active']"
+      >Videogames</a
+    >
+    &nbsp;
+    <a [routerLink]="['/courses']" [routerLinkActive]="['active']">Courses</a>
+    &nbsp;
+    <a [routerLink]="['external']" [routerLinkActive]="['active']">External</a>
+  </nav>
+
+  <hr />
+
+  <!--
+    <button (click)="hideVideogames(false)" *ngIf="showVideogames">
+      Hide videogames
+    </button>
+    <button (click)="hideVideogames(true)" *ngIf="!showVideogames">
+      Show videogames
+    </button>
+
+    <videogames *ngIf="showVideogames"></videogames>
+  -->
+  <!-- <courses></courses> -->
+  <!-- <shoes></shoes> -->
+
+  <router-outlet></router-outlet>
+</div>

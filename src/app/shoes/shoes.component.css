@@ -1,0 +1,12 @@
+.highPrice {
+  color: gray;
+  font-size: 0.8em;
+}
+
+.bgRed {
+  background: red;
+}
+
+.underline {
+  text-decoration: underline;
+}
