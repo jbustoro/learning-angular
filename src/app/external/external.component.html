@@ -1,10 +1,49 @@
-<input type="text" [(ngModel)]="userId" (keyup.enter)="loadUser()" />
+<h2>Create user</h2>
 
-<div *ngIf="!user">
-Loading...
+<form #newUser="ngForm" (ngSubmit)="onSubmit(newUser)">
+  <p>
+    <label for="name">Name</label>
+    <input
+      type="text"
+      name="name"
+      #name="ngModel"
+      [(ngModel)]="new_user.name"
+      required
+    />
+    <span *ngIf="name.touched && !name.valid">Invalid name!</span>
+  </p>
+
+  <p>
+    <label for="job">Job</label>
+    <input
+      type="text"
+      name="job"
+      #job="ngModel"
+      [(ngModel)]="new_user.job"
+      required
+    />
+    <span *ngIf="job.touched && !job.valid">Invalid job!</span>
+  </p>
+
+  <input type="submit" value="Add user" [disabled]="!newUser.form.valid" />
+</form>
+
+<div *ngIf="saved_user">
+  <h2>User saved!</h2>
+  <h3>{{ saved_user.name }}</h3>
+  <h3>{{ saved_user.job }}</h3>
 </div>
 
+<hr />
+
+{{ date | date: "dd/MM/yy" }} {{ date | date: "fullDate" | uppercase }}
+{{ 4 | calculator: 2 }}
+<hr />
+<input type="text" [(ngModel)]="userId" (keyup.enter)="loadUser()" />
+
+<div *ngIf="!user">Loading...</div>
+
 <div *ngIf="user">
-    <img src="{{user.avatar}}" width="150" />
-    <h2>{{user.first_name + ' ' + user.last_name }}</h2>
+  <img src="{{user.avatar}}" width="150" />
+  <h2>{{ user.first_name + " " + user.last_name }}</h2>
 </div>
